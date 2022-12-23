@@ -30,29 +30,30 @@ const App = () => {
 
     return (
         <div className="App">
-            <h1 style={{paddingTop:25}}>Cash: {cash}</h1>
-            <button className='btn-success' onClick={()=>  plusCash(Number(prompt()))}>Top up your account</button>
+            <h1 style={{paddingTop:25}}>___Cash___ : {cash} $ </h1>
+             <button id='btn-one' className='btn-success' onClick={()=>  plusCash(Number(prompt()))}>Top up your account</button>
             <button className='btn-info' onClick={()=> minusCash(Number(prompt()))}>Withdraw from the account</button>
-            <h2 style={{margin: 25}} >
-                Bank customers  : </h2>
-            <div>
-                {customers.length > 0 ?
-                <div style={{fontSize: 25}} >
-                    {customers.map(customer =>
-                        <h3 onClick={() => removeCustomer(customer)}>
-                            {customer.name}
-                        </h3>)}
+            <hr/>
+            <div className='customers'>
+                <h2>___Bank customers___ : </h2>
+                <div className='clients'>
+                    {customers.length > 0 ?
+                        <div>
+                            {customers.map(customer =>
+                                <h3 style={{color:'rgba(248, 124, 0)'}} onClick={() => removeCustomer(customer)}>
+                                    {customer.name}
+                                </h3>)}
+                        </div>
+                        : <div style={{marginTop: 10, fontSize:20, color:'#dc573b'}}>No clients founded !</div>
+                    }
                 </div>
-                    : <h4 style={{margin: 25}}>No clients founded!</h4>
-                }
+                <div className='get-clients-btn'>
+                    <button className='btn-primary' onClick={() => addCustomer(prompt())}>Add clients</button>
+                    <button onClick={() => dispatch(fetchCustomers())} className='btn-warning'>Get clients from the database</button>
+                </div>
             </div>
-
-            <button className='btn-primary' onClick={() => addCustomer(prompt())}>Add clients</button>
-            <div style={{margin:30}}>
-
-                <button onClick={() => dispatch(fetchCustomers())} className='btn-warning'>Get clients from the database</button>
-            </div>
-
+            <img
+                src="https://papik.pro/uploads/posts/2022-01/1642343322_38-papik-pro-p-investitsii-klipart-39.png" alt=""/>
         </div>
     );
 }

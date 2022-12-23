@@ -1,8 +1,6 @@
 const initialState = {
     cash : 100,
 }
-
-
 export const cashReducer = (state = initialState  ,action) => {
     switch (action.type) {
         case 'ADD_CASH':
